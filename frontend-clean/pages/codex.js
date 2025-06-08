@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { fetchCodexPageByTitle } from '../lib/notion.js'
+import SmartRenderer from '../components/SmartRenderer.jsx'
+import { fetchPageById } from '../lib/notion.js'
 
-export default function Codex() {
+export default function CodexPage({ defaultPage }) {
   const [title, setTitle] = useState('')
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
 
-  async function handleFetch() {
+  async function handleSearch() {
     setError('')
     setResult(null)
     try {
@@ -15,32 +16,53 @@ export default function Codex() {
       const data = await res.json()
       setResult(data)
     } catch (err) {
-      setError(err.message)
+      setError(`Page "${title}" not found`)
     }
   }
 
+  const page = result || null
+
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Fetch Codex Page</h1>
-      <input
-        className="border p-2 w-full mb-2"
-        placeholder="Enter page title (e.g. Self Systems)"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <button className="bg-blue-500 text-white px-4 py-2" onClick={handleFetch}>
-        Fetch Page
-      </button>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-      {result && (
-        <div className="mt-6">
-          <h2 className="text-2xl font-bold">{result.title}</h2>
-          <p className="text-gray-500 text-sm">
-            Last updated: {new Date(result.updated).toLocaleString()}
-          </p>
-          <pre className="mt-4 whitespace-pre-wrap">{result.content}</pre>
-        </div>
-      )}
-    </div>
+    <main className="bg-black text-white min-h-screen relative">
+      {/* 🔍 Search Box */}
+      <div className="absolute top-20 right-10 w-80 space-y-2 z-50">
+        <input
+          className="w-full p-3 bg-zinc-900 text-white rounded-md border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="🔍 Search a Codex or Scroll..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+        />
+        <button
+          onClick={handleSearch}
+          className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
+        >
+          Fetch Page
+        </button>
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+      </div>
+
+      {/* 🪞 Symbolic Reflection Zone */}
+      <div className="flex items-center justify-center pt-40 px-4">
+        {page ? (
+          <div className="max-w-2xl w-full">
+            <SmartRenderer
+              title={page.title}
+              updated={page.updated}
+              content={page.content}
+            />
+          </div>
+        ) : (
+          <div className="text-theme-muted text-center text-lg max-w-lg mx-auto px-4">
+            🪞 <br />What would you like to remember?<br />
+            Type the name of a Scroll or Codex to summon it from your memory.
+          </div>
+        )}
+      </div>
+    </main>
   )
+}
+
+export async function getServerSideProps() {
+  return { props: { defaultPage: null } }
 }
