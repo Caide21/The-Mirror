@@ -2,6 +2,25 @@ import { Client } from '@notionhq/client'
 
 const notion = new Client({ auth: process.env.NOTION_KEY })
 
+export async function fetchPageById(pageId) {
+  const page = await notion.pages.retrieve({ page_id: pageId })
+  const title = page.properties?.title?.title?.[0]?.plain_text || 'Untitled'
+
+  const blocks = await notion.blocks.children.list({
+    block_id: pageId,
+    page_size: 100,
+  })
+
+  const content = blocks.results
+    .map((block) => {
+      const rich = block[block.type]?.rich_text
+      return rich ? rich.map((r) => r.plain_text).join('') : ''
+    })
+    .join('\n\n')
+
+  return { id: pageId, title, content, updated: page.last_edited_time }
+}
+
 export async function fetchCodexPageByTitle(titleQuery) {
   const response = await notion.search({
     query: titleQuery,
@@ -40,4 +59,11 @@ export async function fetchCodexPageByTitle(titleQuery) {
     content,
     updated: matchedPage.last_edited_time,
   }
+}
+
+export function inferTypeFromTitle(title = '') {
+  const lower = title.toLowerCase()
+  if (lower.includes('scroll')) return 'Scroll'
+  if (lower.includes('codex')) return 'Codex'
+  return 'Unknown'
 }
