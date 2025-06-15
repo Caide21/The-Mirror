@@ -105,48 +105,55 @@ export async function fetchPageById(pageId) {
 }
 
 export async function fetchCodexPageByTitle(titleQuery) {
-  console.log('🔍 Searching Notion for:', titleQuery)
+  console.log('🔍 Searching Notion for:', titleQuery);
+  const normQuery = normalize(titleQuery);
+  console.log('🧽 Normalized Query:', normQuery);
 
-  const response = await notion.search({
-    query: titleQuery,
-    filter: { value: 'page', property: 'object' }
-  })
+  let pages = [];
+  let cursor = undefined;
 
-  const normQuery = normalize(titleQuery)
-  console.log('🧽 Normalized Query:', normQuery)
+  do {
+    const response = await notion.search({
+      start_cursor: cursor,
+      page_size: 100,
+      filter: { value: 'page', property: 'object' },
+    });
 
-  response.results.forEach(page => {
-    const rawTitle = page.properties?.title?.title?.[0]?.plain_text || 'Untitled'
-    const normTitle = normalize(rawTitle)
-    console.log(`→ Found: "${rawTitle}" → "${normTitle}"`)
-  })
+    pages.push(...response.results);
+    cursor = response.has_more ? response.next_cursor : null;
+  } while (cursor);
 
-  let matchedPage = response.results.find(page => {
-    const notionTitle = page.properties?.title?.title?.[0]?.plain_text || ''
-    return normalize(notionTitle) === normQuery
-  })
+  pages.forEach(page => {
+    const rawTitle = page.properties?.title?.title?.[0]?.plain_text || 'Untitled';
+    const normTitle = normalize(rawTitle);
+    console.log(`→ Found: "${rawTitle}" → "${normTitle}"`);
+  });
+
+  let matchedPage = pages.find(page => {
+    const notionTitle = page.properties?.title?.title?.[0]?.plain_text || '';
+    return normalize(notionTitle) === normQuery;
+  });
 
   if (!matchedPage) {
-    matchedPage = response.results.find(page => {
-      const notionTitle = page.properties?.title?.title?.[0]?.plain_text || ''
-      const normTitle = normalize(notionTitle)
-      return normTitle.startsWith(normQuery) || normTitle.includes(normQuery)
-    })
+    matchedPage = pages.find(page => {
+      const notionTitle = page.properties?.title?.title?.[0]?.plain_text || '';
+      const normTitle = normalize(notionTitle);
+      return normTitle.startsWith(normQuery) || normTitle.includes(normQuery);
+    });
   }
 
   if (!matchedPage) {
-    console.warn(`❌ No match found for "${titleQuery}"`)
-    throw new Error(`Page "${titleQuery}" not found`)
+    console.warn(`❌ No match found for "${titleQuery}"`);
+    throw new Error(`Page "${titleQuery}" not found`);
   }
 
   const blocks = await notion.blocks.children.list({
     block_id: matchedPage.id,
     page_size: 100,
-  })
+  });
 
-  const content = await parseBlocks(blocks)
-
-  const title = matchedPage.properties?.title?.title?.[0]?.plain_text || titleQuery
+  const content = await parseBlocks(blocks);
+  const title = matchedPage.properties?.title?.title?.[0]?.plain_text || titleQuery;
 
   return {
     id: matchedPage.id,
@@ -154,5 +161,6 @@ export async function fetchCodexPageByTitle(titleQuery) {
     content,
     updated: matchedPage.last_edited_time,
     type: inferTypeFromTitle(title),
-  }
+  };
 }
+

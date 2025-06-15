@@ -135,3 +135,7 @@ html.psy-trip * {
   background: rgba(139, 92, 246, 0.12);
   border-color: rgba(139, 92, 246, 0.5);
 }
+
+.mirror-glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/20 shadow-inner rounded-xl;
+}
