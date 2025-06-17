@@ -1,5 +1,5 @@
-import { fetchCodexPageByTitle } from '../../lib/notion.js'
-import SmartRenderer from '../../components/SmartRenderer.jsx'
+import { fetchCodexPageByTitle } from '@/lib/notion.js'
+import SmartRenderer from '@/components/SmartRenderer.jsx'
 
 export default function CodexSlugPage({ page }) {
   if (!page) {

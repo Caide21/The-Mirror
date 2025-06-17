@@ -6,10 +6,10 @@ export default function Contact() {
       <div className="text-center space-y-6 max-w-xl">
         <div className="text-4xl">📩</div>
         <h1 className="text-3xl font-bold">Start a Scroll</h1>
-        <p className="text-theme-muted text-lg">
-          If you resonate with what I build, let's begin a conversation.  
-          Tell me what you’re creating — or what you want to feel.
-        </p>
+          <p className="text-theme-muted text-lg">
+            If you resonate with what I build, let&apos;s begin a conversation.
+            Tell me what you’re creating — or what you want to feel.
+          </p>
       </div>
 
       <form className="mt-10 w-full max-w-xl space-y-6">
