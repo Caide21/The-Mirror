@@ -1,0 +1,12 @@
+{
+    "free": {
+      "StatEvaluator": 3
+    },
+    "core": {
+      "StatEvaluator": 100
+    },
+    "pro": {
+      "StatEvaluator": 300
+    }
+  }
+  

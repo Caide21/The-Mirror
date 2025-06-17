@@ -1,13 +1,13 @@
 import React from "react";
-import SkillMap from "@/components/Control_Components/SkillMap";
+import RitualMap from "@/components/Control_Components/RitualMap";
 import PageFrame from "@/components/Control_Components/PageFrame";
 
-export default function SkillTreePage() {
+export default function SpellbookPage() {
   return (
     <PageFrame>
       <div className="p-6 max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">🌳 Skill Tree</h1>
-        <SkillMap />
+        <h1 className="text-4xl font-bold mb-6">📖 The Spellbook</h1>
+        <RitualMap />
       </div>
     </PageFrame>
   );
