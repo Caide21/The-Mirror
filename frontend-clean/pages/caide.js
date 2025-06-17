@@ -48,7 +48,7 @@ export default function About() {
         <p className="text-sm text-white/60">
           If you’re building something that matters — something that feels — then I can help you sculpt it.
           <br />
-          Together, we don't just ship products. We shape perception.
+          Together, we don&apos;t just ship products. We shape perception.
         </p>
         <div className="mt-6">
           <a

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Work() {
   return (
@@ -50,9 +51,9 @@ export default function Work() {
           <p className="text-sm text-theme-muted">
             This very site — modular, expressive, symbolic. Tailored to invite resonance-aligned collaborators.
           </p>
-          <a href="/" className="text-purple-400 underline mt-2 inline-block">
-            View Landing →
-          </a>
+            <Link href="/" className="text-purple-400 underline mt-2 inline-block">
+              View Landing →
+            </Link>
         </div>
       </section>
     </main>
