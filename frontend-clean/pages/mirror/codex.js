@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import SmartRenderer from '../components/SmartRenderer.jsx'
-import { fetchPageById } from '../lib/notion.js'
+import SmartRenderer from '@/components/SmartRenderer.jsx'
+import { fetchPageById } from '@/lib/notion.js'
 
 export default function CodexPage({ defaultPage }) {
   const [title, setTitle] = useState('')

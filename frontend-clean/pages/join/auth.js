@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function Auth() {
   const [username, setUsername] = useState('');
@@ -55,12 +56,12 @@ export default function Auth() {
           <div className="text-4xl">✨</div>
           <h2 className="text-2xl font-semibold">Welcome, {username}</h2>
           <p className="text-theme-muted">Your presence is now encoded.</p>
-          <a
-            href="/"
+          <Link
+            href="/home"
             className="inline-block mt-6 px-6 py-3 rounded-xl bg-white text-black font-medium hover:scale-105 transition"
           >
             Enter the Portal
-          </a>
+          </Link>
         </div>
       )}
     </main>

@@ -49,10 +49,11 @@ export default function About() {
           If you’re building something that matters — something that feels — then I can help you sculpt it.
           <br />
           Together, we don't just ship products. We shape perception.
+          Together, we don&apos;t just ship products. We shape perception.
         </p>
         <div className="mt-6">
           <a
-            href="/contact"
+            href="/join"
             className="inline-block px-6 py-3 rounded-xl bg-white text-black font-semibold hover:scale-105 transition"
           >
             Start a Scroll Together

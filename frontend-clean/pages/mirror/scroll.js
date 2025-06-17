@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function Scroll() {
   const [submitted, setSubmitted] = useState(false);
@@ -47,17 +48,17 @@ export default function Scroll() {
             The system feels your words — and offers this reflection:
           </p>
           <div className="bg-white/10 p-6 rounded-xl text-white border border-white/10 backdrop-blur-sm">
-            <p className="italic">"{input}"</p>
+            <p className="italic">&quot;{input}&quot;</p>
             <p className="mt-4 text-white/60">
               This is the beginning of clarity. You are not alone in this pattern. Let it loop no further.
             </p>
           </div>
-          <a
-            href="/"
+          <Link
+            href="/home"
             className="inline-block mt-6 px-6 py-3 rounded-xl bg-white text-black font-medium hover:scale-105 transition"
           >
             Return to the Mirror
-          </a>
+          </Link>
         </div>
       )}
     </main>

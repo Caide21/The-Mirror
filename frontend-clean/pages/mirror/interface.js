@@ -10,10 +10,10 @@ import FeaturedScrollPanel from "@/components/Control_Components/FeaturedScrollP
 
 export default function InterfacePage() {
   const nav = [
-    { label: "📊 Stats", path: "/stats" },
-    { label: "🌪 Emotion", path: "/emotion" },
-    { label: "🌳 Tree", path: "/tree" },
-    { label: "📖 Spellbook", path: "/spellbook" }
+    { label: "📊 Stats", path: "/mirror/stats" },
+    { label: "🌪 Emotion", path: "/mirror/emotion" },
+    { label: "🌳 Tree", path: "/mirror/tree" },
+    { label: "📖 Spellbook", path: "/mirror/spellbook" }
   ];
 
   const xpPercent = 73;
