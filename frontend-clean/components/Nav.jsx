@@ -14,8 +14,8 @@ export default function Nav() {
         <div className="space-x-6 text-sm font-medium">
           <Link href="/mirror/scroll" className="hover:text-purple-400 transition">Scroll</Link>
           <Link href="/caide" className="hover:text-purple-400 transition">About</Link>
-          <Link href="/work" className="hover:text-purple-400 transition">Work</Link>
-          <Link href="/join" className="hover:text-purple-400 transition">Contact</Link>
+          <Link href="/join/work" className="hover:text-purple-400 transition">Work</Link>
+          <Link href="/join/contact" className="hover:text-purple-400 transition">Contact</Link>
         </div>
       </div>
     </nav>
