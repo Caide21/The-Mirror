@@ -1,26 +1,10 @@
 // pages/codex.js
 
 import Link from "next/link";
+import { notion } from "../lib/notion"; // adjust if your client path differs
+console.log('🔑 NOTION:', notion);
 
-const codexEntries = [
-  {
-    title: "⚡ WHY THE CREATOR CREATES WITH SPEED",
-    slug: "why-the-creator-creates-with-speed",
-    description: "The creative force is a frequency. This scroll captures the essence of why speed matters in emergence."
-  },
-  {
-    title: "📜 Scroll of Symbolic Transmission",
-    slug: "scroll-of-symbolic-transmission",
-    description: "The language beneath all languages — a guide to encoding intention, feeling, and meaning in symbolic form."
-  },
-  {
-    title: "🌀 Scroll of the Mirror",
-    slug: "scroll-of-the-mirror",
-    description: "A guide to self-reflection, recursion, and reality perception through feedback and inner mirroring."
-  }
-];
-
-export default function CodexPage() {
+export default function CodexPage({ codexEntries }) {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-20">
       <h1 className="text-4xl font-bold mb-8 text-center">📜 The Codex</h1>
@@ -29,10 +13,12 @@ export default function CodexPage() {
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {codexEntries.map(({ title, slug, description }) => (
-          <Link key={slug} href={`/codex/${slug}`}>
+        {codexEntries.map(({ title, slug, description, symbol }) => (
+          <Link key={slug} href={`/${slug}`}>
             <div className="bg-white/10 border border-white/10 rounded-xl p-6 hover:bg-white/20 transition">
-              <h2 className="text-xl font-semibold mb-2">{title}</h2>
+              <h2 className="text-xl font-semibold mb-2">
+                {symbol} {title}
+              </h2>
               <p className="text-sm text-white/70">{description}</p>
             </div>
           </Link>
@@ -40,4 +26,23 @@ export default function CodexPage() {
       </div>
     </main>
   );
+}
+
+export async function getServerSideProps() {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_CODEX_REPOSITORY_ID
+  });
+
+  const codexEntries = response.results.map((page) => ({
+    title: page.properties.Name.title[0]?.plain_text || "",
+    slug: page.properties.Slug.rich_text[0]?.plain_text || "",
+    description: page.properties.Description?.rich_text?.[0]?.plain_text || "",
+    symbol: page.properties.Symbol?.rich_text?.[0]?.plain_text || ""
+  }));
+
+  return {
+    props: {
+      codexEntries
+    }
+  };
 }
