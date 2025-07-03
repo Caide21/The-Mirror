@@ -29,20 +29,27 @@ export default function CodexPage({ codexEntries }) {
 }
 
 export async function getServerSideProps() {
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_CODEX_REPOSITORY_ID
-  });
+  try {
+    console.log("✅ NOTION_CODEX_REPOSITORY_ID:", process.env.NOTION_CODEX_REPOSITORY_ID);
 
-  const codexEntries = response.results.map((page) => ({
-    title: page.properties.Name.title[0]?.plain_text || "",
-    slug: page.properties.Slug.rich_text[0]?.plain_text || "",
-    description: page.properties.Description?.rich_text?.[0]?.plain_text || "",
-    symbol: page.properties.Symbol?.rich_text?.[0]?.plain_text || ""
-  }));
+    const response = await notion.databases.query({
+      database_id: process.env.NOTION_CODEX_REPOSITORY_ID
+    });
 
-  return {
-    props: {
-      codexEntries
-    }
-  };
+    console.log("✅ NOTION QUERY RESPONSE:", JSON.stringify(response, null, 2));
+
+    const codexEntries = response.results.map((page) => ({
+      title: page.properties.Name?.title?.[0]?.plain_text || "Untitled",
+      slug: page.properties.Slug?.rich_text?.[0]?.plain_text || "",
+      description: page.properties.Description?.rich_text?.[0]?.plain_text || "",
+      symbol: page.properties.Symbol?.rich_text?.[0]?.plain_text || ""
+    }));
+
+    return { props: { codexEntries } };
+
+  } catch (err) {
+    console.error("❌ CODEx SSR error:", err);
+    return { notFound: true };
+  }
 }
+
