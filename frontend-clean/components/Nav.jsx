@@ -15,6 +15,7 @@ export default function Nav() {
           <Link href="/codex" className="hover:text-purple-400 transition">📜 Codex</Link>
           <Link href="/mirror" className="hover:text-purple-400 transition">🪞 Mirror</Link>
           <Link href="/caide" className="hover:text-purple-400 transition">🧬 Caide</Link>
+          <Link href="/quests" className="hover:text-purple-400 transition">🎯 Quests</Link>
           <Link href="/join" className="hover:text-purple-400 transition">🤝 Join</Link>
         </div>
       </div>

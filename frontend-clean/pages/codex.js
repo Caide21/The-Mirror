@@ -9,7 +9,7 @@ export default function CodexPage({ codexEntries }) {
     <main className="min-h-screen bg-black text-white px-6 py-20">
       <h1 className="text-4xl font-bold mb-8 text-center">📜 The Codex</h1>
       <p className="text-theme-muted text-center max-w-2xl mx-auto mb-12">
-        These scrolls encode the core beliefs, operating principles, and system design grammar of The Mirror OS.
+        These codex entries and laws encode the core beliefs, operating principles, and system design grammar of The Mirror OS.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
