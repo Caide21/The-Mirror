@@ -3,8 +3,9 @@ import ScrollCard from './Control_Components/ScrollCard.jsx'
 import CodexCard from './Control_Components/CodexCard.jsx'
 
 export default function SmartRenderer({ title, updated, content, type }) {
-  // ✅ Use the type directly
-  if (type === 'Scroll') {
+  const normalizedType = type === 'Lexicon' ? 'Codex' : type
+
+  if (normalizedType === 'Scroll') {
     return (
       <ScrollCard
         emoji="📜"
@@ -14,7 +15,7 @@ export default function SmartRenderer({ title, updated, content, type }) {
     )
   }
 
-  if (type === 'Codex') {
+  if (normalizedType === 'Codex') {
     return (
       <CodexCard
         title={title}

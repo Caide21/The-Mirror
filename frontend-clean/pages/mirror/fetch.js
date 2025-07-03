@@ -9,11 +9,20 @@ export default function CodexPage({ defaultPage }) {
   async function handleSearch() {
     setError('')
     setResult(null)
+
     try {
       const res = await fetch(`/api/fetch-codex?title=${encodeURIComponent(title)}`)
       if (!res.ok) throw new Error(await res.text())
       const data = await res.json()
-      setResult(data)
+
+      // ✅ Normalize Lexicon → Codex once here
+      const normalized = {
+        ...data,
+        type: data.type === "Lexicon" ? "Codex" : data.type,
+      }
+
+      setResult(normalized)
+
     } catch (err) {
       setError(`Page "${title}" not found`)
     }
@@ -48,7 +57,7 @@ export default function CodexPage({ defaultPage }) {
             <SmartRenderer
               title={page.title}
               updated={page.updated}
-              content={page.content}
+              content={page.description} // or page.content if that’s your field
               type={page.type}
             />
           </div>
