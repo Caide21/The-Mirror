@@ -49,6 +49,7 @@ export default function CodexPage({ defaultPage }) {
               title={page.title}
               updated={page.updated}
               content={page.content}
+              type={page.type}
             />
           </div>
         ) : (

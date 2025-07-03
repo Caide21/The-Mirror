@@ -1,11 +1,9 @@
 import React from 'react'
 import ScrollCard from './Control_Components/ScrollCard.jsx'
 import CodexCard from './Control_Components/CodexCard.jsx'
-import { inferTypeFromTitle } from '../lib/notion.js'
 
-export default function SmartRenderer({ title, updated, content }) {
-  const type = inferTypeFromTitle(title)
-
+export default function SmartRenderer({ title, updated, content, type }) {
+  // ✅ Use the type directly
   if (type === 'Scroll') {
     return (
       <ScrollCard
@@ -17,7 +15,13 @@ export default function SmartRenderer({ title, updated, content }) {
   }
 
   if (type === 'Codex') {
-    return <CodexCard title={title} updated={updated} content={content} />
+    return (
+      <CodexCard
+        title={title}
+        updated={updated}
+        content={content}
+      />
+    )
   }
 
   return (
