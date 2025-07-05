@@ -1,6 +1,6 @@
 import React from "react";
-import RitualMap from "@/components/Control_Components/RitualMap";
-import PageFrame from "@/components/Control_Components/PageFrame";
+import RitualMap from "@/components/Mirror/RitualMap";
+import PageFrame from "@/components/Frames/PageFrame";
 
 export default function SpellbookPage() {
   return (

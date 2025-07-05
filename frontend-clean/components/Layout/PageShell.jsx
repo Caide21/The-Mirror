@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
 import { useState, useEffect } from 'react';
-import PhaseShiftLayer from '@/components/Enchantment_Components/PhaseShiftLayer';
-import PsyTripEngine from '@/components/Enchantment_Components/PsyTripEngine';
+import PhaseShiftLayer from '../Enchantments/PhaseShiftLayer';
+import PsyTripEngine from '../Enchantments/PsyTripEngine';
 import useIdle from '@/hooks/useIdle';
 
 export default function PageShell({ children }) {

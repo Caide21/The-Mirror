@@ -14,7 +14,7 @@ export default function QuestsPage({ quests }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {quests.map(({ title, slug, description, symbol }) => (
-          <Link key={slug} href={`/quests/${slug}`}>
+          <Link key={slug} href={`/${slug}`}>
             <div className="bg-white/10 border border-white/10 rounded-xl p-6 hover:bg-white/20 transition">
               <h2 className="text-xl font-semibold mb-2">
                 {symbol} {title}

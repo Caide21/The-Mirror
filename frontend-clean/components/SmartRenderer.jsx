@@ -1,35 +1,35 @@
-import React from 'react'
-import ScrollCard from './Control_Components/ScrollCard.jsx'
-import CodexCard from './Control_Components/CodexCard.jsx'
+import { ScrollPage, RitualPage, CodexPage, QuestPage } from './Pages'
+import { ScrollCard, RitualCard, CodexCard, QuestCard } from './Cards'
 
-export default function SmartRenderer({ title, updated, content, type }) {
-  const normalizedType = type === 'Lexicon' ? 'Codex' : type
+export default function SmartRenderer({ page, blocks, mode = 'card' }) {
+  const properties = page.properties
 
-  if (normalizedType === 'Scroll') {
-    return (
-      <ScrollCard
-        emoji="📜"
-        title={title}
-        description={content}
-      />
-    )
+  const type = properties.Type?.select?.name || ''
+
+  const props = {
+    title: properties.Name?.title[0]?.plain_text || '',
+    slug: properties.Slug?.rich_text[0]?.plain_text || '',
+    description: properties.Description?.rich_text?.[0]?.plain_text || '',
+    symbol: properties.Symbol?.rich_text?.[0]?.plain_text || '',
+    essence: properties.Essence?.rich_text?.[0]?.plain_text || '',
+    coreLaw: properties.CoreLaw?.rich_text?.[0]?.plain_text || '',
+    ritual: properties.Ritual?.rich_text?.[0]?.plain_text || '',
+    blocks: blocks || [] // ✅ safe fallback
   }
 
-  if (normalizedType === 'Codex') {
-    return (
-      <CodexCard
-        title={title}
-        updated={updated}
-        content={content}
-      />
-    )
+  if (mode === 'card') {
+    if (type === 'Scroll') return <ScrollCard {...props} />
+    if (type === 'Ritual') return <RitualCard {...props} />
+    if (type === 'Codex') return <CodexCard {...props} />
+    if (type === 'Quest') return <QuestCard {...props} />
   }
 
-  return (
-    <div className="theme-card bg-black text-white rounded-xl p-6 space-y-3">
-      <h2 className="text-lg font-semibold">{title}</h2>
-      <p className="text-xs theme-muted">{new Date(updated).toLocaleString()}</p>
-      <pre className="whitespace-pre-wrap theme-muted text-sm">{content}</pre>
-    </div>
-  )
+  if (mode === 'detail') {
+    if (type === 'Scroll') return <ScrollPage {...props} />
+    if (type === 'Ritual') return <RitualPage {...props} />
+    if (type === 'Codex') return <CodexPage {...props} />
+    if (type === 'Quest') return <QuestPage {...props} />
+  }
+
+  return <div>Unknown Type</div>
 }

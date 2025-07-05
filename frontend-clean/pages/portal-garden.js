@@ -1,4 +1,4 @@
-import PortalGardenScene from "../components/Enchantment_Components/PortalGardenScene";
+import PortalGardenScene from "../components/Enchantments/PortalGardenScene";
 
 const codexEntries = [
   {

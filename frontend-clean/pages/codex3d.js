@@ -1,4 +1,4 @@
-import ThreeScene from "../components/Enchantment_Components/ThreeScene";
+import ThreeScene from "../components/Enchantments/ThreeScene";
 
 // ✅ 1️⃣ Your symbolic scroll data — unchanged
 const codexEntries = [

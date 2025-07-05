@@ -1,6 +1,6 @@
 import React from "react";
-import StatMap from "@/components/Control_Components/StatMap";
-import PageFrame from "@/components/Control_Components/PageFrame";
+import StatMap from "@/components/Mirror/StatMap";
+import PageFrame from "@/components/Frames/PageFrame";
 
 export default function StatsPage() {
   return (

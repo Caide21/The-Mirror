@@ -1,6 +1,6 @@
 import React from "react";
-import EmotionMap from "@/components/Control_Components/EmotionMap";
-import PageFrame from "@/components/Control_Components/PageFrame";
+import EmotionMap from "@/components/Mirror/EmotionMap";
+import PageFrame from "@/components/Frames/PageFrame";
 
 export default function EmotionPage() {
   return (

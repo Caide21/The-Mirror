@@ -2,8 +2,8 @@ import '../styles/globals.css';
 import '../styles/z-layer.css';
 import '../styles/fog.css'; // 🌀 visual fog overlays (only show when ERS is ACTIVE)
 
-import Layout from '../components/PageShell';
-import Nav from '../components/Nav';
+import Layout from '../components/Layout/PageShell';
+import Nav from '../components/Layout/Nav';
 import { ThemeProvider } from '../context/ThemeContext';
 
 import { useEffect } from 'react';

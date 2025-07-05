@@ -1,6 +1,6 @@
 import React from "react";
-import SkillMap from "@/components/Control_Components/SkillMap";
-import PageFrame from "@/components/Control_Components/PageFrame";
+import SkillMap from "@/components/Mirror/SkillMap";
+import PageFrame from "@/components/Frames/PageFrame";
 
 export default function SkillTreePage() {
   return (

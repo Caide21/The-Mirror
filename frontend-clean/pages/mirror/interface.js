@@ -1,12 +1,12 @@
 import React from "react";
-import PageFrame from "@/components/Control_Components/PageFrame";
+import PageFrame from "@/components/Frames/PageFrame";
 import Link from "next/link";
 
-import FocusPanel from "@/components/Control_Components/FocusPanel";
-import RegulationPanel from "@/components/Control_Components/RegulationPanel";
-import RecentLogPanel from "@/components/Control_Components/RecentLogPanel";
-import EmotionSummary from "@/components/Control_Components/EmotionSummary";
-import FeaturedScrollPanel from "@/components/Control_Components/FeaturedScrollPanel";
+import FocusPanel from "@/components/Mirror/FocusPanel";
+import RegulationPanel from "@/components/Mirror/RegulationPanel";
+import RecentLogPanel from "@/components/Mirror/RecentLogPanel";
+import EmotionSummary from "@/components/Mirror/EmotionSummary";
+import FeaturedScrollPanel from "@/components/Mirror/FeaturedScrollPanel";
 
 export default function InterfacePage() {
   const nav = [

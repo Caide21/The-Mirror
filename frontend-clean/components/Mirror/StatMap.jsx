@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import StatCard from "./StatCard";
-import SectionHeading from "./SectionHeading";
+import StatCard from "../Cards/StatCard";
+import SectionHeading from "../SectionHeading";
 
 const categoryMetadata = {
   mental: { icon: "🧠", label: "Mental / Cognitive", color: "text-sky-400" },
