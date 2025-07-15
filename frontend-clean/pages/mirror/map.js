@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import mapData from "@/data/map.json";
 
-const Map = dynamic(() => import("@/components/Control_Components/Map"), {
+const Map = dynamic(() => import("@/components/Containers/MapContainer"), {
   ssr: false
 });
 
