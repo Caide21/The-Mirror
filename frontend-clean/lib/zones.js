@@ -20,7 +20,8 @@ export const ZONE_MAP = {
   },
   zone4: {
     name: "The Pulse",
-    emoji: "💓",
+    emoji: "",
+    // 💓
     essence: "Action",
     description: "Transform stagnation through movement."
   },

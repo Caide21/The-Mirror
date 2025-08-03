@@ -18,8 +18,7 @@ export default function Scroll() {
         <div className="text-4xl">🌀</div>
         <h1 className="text-3xl font-bold">Experience the Scroll</h1>
         <p className="text-theme-muted text-lg">
-          This is a reflective ritual — not a form.
-          Speak your current state, and the system will echo it back.
+          Selfware doesn’t just track your growth — it teaches your mind and body how to speak the same language.
         </p>
       </div>
 

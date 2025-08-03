@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RegistrationModal from "@/components/Modals/RegistrationModal";
 import PageHeading from "@/components/Layout/PageHeading";
+import PageWrapper from "@/components/Layout/PageWrapper";
 
 export default function ServicesPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function ServicesPage() {
   };
 
   return (
-    <main className="bg-black text-white min-h-screen">
+    <PageWrapper>
       <PageHeading
         emoji="💼"
         title="Scroll of Services"
@@ -48,6 +49,6 @@ export default function ServicesPage() {
         onClose={() => setModalOpen(false)}
         onSubmit={handleFormSubmit}
       />
-    </main>
+    </PageWrapper>
   );
 }
