@@ -92,58 +92,6 @@ export default function ClientDashboard() {
     }
   };
 
-  const generateInvoice = async (client) => {
-    const pdfMake = (await import("pdfmake/build/pdfmake")).default;
-    const pdfFonts = await import("pdfmake/build/vfs_fonts");
-    pdfMake.vfs = vfs;
-
-    const invoiceDate = new Date().toLocaleDateString();
-    const total = "R250";
-
-    const docDefinition = {
-      content: [
-        { text: "Selfware AI Session Invoice", style: "header" },
-        { text: `Date: ${invoiceDate}\n\n` },
-        {
-          columns: [
-            {
-              width: "*",
-              text: [
-                { text: "Billed To:\n", bold: true },
-                `${client.name}\n${client.email}\n${client.phone || ""}\n${client.address || ""}\n`
-              ]
-            },
-            {
-              width: "auto",
-              text: [
-                { text: "Invoice #: ", bold: true },
-                `${client.id?.slice(0, 6).toUpperCase()}\n`,
-                { text: "Status: ", bold: true },
-                `${client.status || "Unpaid"}\n`
-              ]
-            }
-          ]
-        },
-        { text: "\nSession Details", style: "subheader" },
-        {
-          ul: [
-            `Focus: ${client.focus_areas?.join(", ")}`,
-            `Project: ${client.project || "—"}`,
-            client.vat_number ? `VAT Number: ${client.vat_number}` : null
-          ].filter(Boolean)
-        },
-        { text: "\nTotal Due: " + total, style: "total" }
-      ],
-      styles: {
-        header: { fontSize: 18, bold: true, marginBottom: 10 },
-        subheader: { fontSize: 14, bold: true, marginTop: 10, marginBottom: 5 },
-        total: { fontSize: 16, bold: true, marginTop: 20 }
-      }
-    };
-
-    pdfMake.createPdf(docDefinition).open();
-  };
-
   if (!authChecked) {
     return (
       <main className="bg-black text-white min-h-screen flex items-center justify-center">
@@ -256,12 +204,12 @@ export default function ClientDashboard() {
                     {client.notes && (
                       <div><strong>Notes:</strong> {client.notes}</div>
                     )}
-                    <button
-                      onClick={() => generateInvoice(client)}
+                    {/* <button
+                      onClick={() => resendInvoice(client)}
                       className="mt-2 underline text-blue-400 text-sm hover:opacity-80"
                     >
-                      📤 Download Invoice
-                    </button>
+                      📤 Resend Invoice
+                    </button> */}
                   </div>
                 )}
               </div>

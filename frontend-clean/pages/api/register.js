@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { sendConfirmationEmail } from "@/lib/sendConfirmation";
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
@@ -15,6 +16,7 @@ export default async function handler(req, res) {
     vat_number
   } = JSON.parse(req.body);
 
+  // Save to Supabase
   const { error } = await supabase.from("registrations").insert({
     name,
     email,
@@ -31,60 +33,45 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Failed to register" });
   }
 
-  // 🧾 Generate PDF
   try {
-    const pdfMake = (await import("pdfmake/build/pdfmake")).default;
-    const pdfFonts = await import("pdfmake/build/vfs_fonts");
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    // 📄 Generate invoice with pdf-lib
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage([595, 842]);
+    const { width, height } = page.getSize();
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const black = rgb(0, 0, 0);
 
-    const invoiceDate = new Date().toLocaleDateString();
-    const total = "R250";
+    const lines = [
+      "Selfware AI Session Invoice",
+      "",
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone || "—"}`,
+      `Address: ${address || "—"}`,
+      `VAT: ${vat_number || "—"}`,
+      "",
+      `Focus Areas: ${focusAreas.join(", ")}`,
+      `Project: ${project || "—"}`,
+      "",
+      `Status: Pending`,
+      `Total: R250`,
+      `Date: ${new Date().toLocaleDateString()}`
+    ];
 
-    const docDefinition = {
-      content: [
-        { text: "Selfware AI Session Invoice", style: "header" },
-        { text: `Date: ${invoiceDate}\n\n` },
-        {
-          columns: [
-            {
-              width: "*",
-              text: [
-                { text: "Billed To:\n", bold: true },
-                `${name}\n${email}\n${phone || ""}\n${address || ""}\n`
-              ]
-            },
-            {
-              width: "auto",
-              text: [
-                { text: "Status: ", bold: true },
-                "Pending"
-              ]
-            }
-          ]
-        },
-        { text: "\nSession Details", style: "subheader" },
-        {
-          ul: [
-            `Focus: ${focusAreas.join(", ")}`,
-            `Project: ${project || "—"}`,
-            vat_number ? `VAT Number: ${vat_number}` : null
-          ].filter(Boolean)
-        },
-        { text: "\nTotal Due: " + total, style: "total" }
-      ],
-      styles: {
-        header: { fontSize: 18, bold: true, marginBottom: 10 },
-        subheader: { fontSize: 14, bold: true, marginTop: 10, marginBottom: 5 },
-        total: { fontSize: 16, bold: true, marginTop: 20 }
-      }
-    };
+    lines.forEach((line, i) => {
+      page.drawText(line, {
+        x: 50,
+        y: height - 60 - i * 20,
+        size: 12,
+        font,
+        color: black
+      });
+    });
 
-    const pdfDoc = pdfMake.createPdf(docDefinition);
+    const pdfBytes = await pdfDoc.save();
+    const pdfBuffer = Buffer.from(pdfBytes);
 
-    const pdfBuffer = await new Promise((resolve, reject) =>
-      pdfDoc.getBuffer((buffer) => resolve(buffer))
-    );
-
+    // 📧 Email it via Resend
     await sendConfirmationEmail({
       to: email,
       name,
@@ -92,9 +79,9 @@ export default async function handler(req, res) {
       status: "Pending",
       pdfBuffer
     });
+
   } catch (err) {
     console.error("📤 PDF/Email error:", err);
-    // Don't fail the response, allow fallback
   }
 
   res.status(200).json({ message: "Registration successful" });
