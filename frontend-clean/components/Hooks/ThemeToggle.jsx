@@ -10,7 +10,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="text-purple-600 border border-purple-600 px-3 py-1 rounded hover:bg-purple-600 hover:text-white dark:text-purple-300 dark:border-purple-300 dark:hover:bg-purple-300 dark:hover:text-black transition"
+      className="text-sm sm:text-base text-purple-600 border border-purple-600 px-4 py-2 rounded hover:bg-purple-600 hover:text-white dark:text-purple-300 dark:border-purple-300 dark:hover:bg-purple-300 dark:hover:text-black transition"
     >
       {theme === 'light' ? '☾ Dark Mode' : '☀ Light Mode'}
     </button>

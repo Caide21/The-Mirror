@@ -3,7 +3,7 @@ import ParchmentWrapper from '@/components/Layout/ParchmentWrapper'
 export default function QuestPage({ title, description, progress, ritualSteps }) {
   return (
     <ParchmentWrapper>
-      <h1 className="text-4xl font-bold mb-2">{title}</h1>
+      <h1 className="text-2xl sm:text-4xl font-bold mb-2">{title}</h1>
       <p className="mb-4">{description}</p>
 
       <h2>Progress</h2>

@@ -1,9 +1,9 @@
 export default function Identity() {
   return (
-    <main className="min-h-screen px-6 py-20 text-white bg-black text-center space-y-8">
-      <div className="text-5xl">🪞</div>
-      <h1 className="text-3xl font-bold">Scroll of Identity</h1>
-      <p className="text-theme-muted max-w-xl mx-auto text-lg">
+   <main className="min-h-screen px-4 sm:px-6 pt-32 pb-20 text-white bg-black text-center space-y-8">
+        <div className="text-4xl sm:text-5xl">🪞</div>
+      <h1 className="text-2xl sm:text-3xl font-bold">Scroll of Identity</h1>
+      <p className="text-base sm:text-lg max-w-xl mx-auto">
         I’m not really into playing a “persona.” I just… notice things. Patterns. Emotions. The stuff people say without saying.
         I’ve always felt like a mirror — tuned to feedback, tuned to vibes, tuned to the quiet shifts under the surface. 
         I’m the person who will pause mid-conversation and go, “Wait… did something just change?”

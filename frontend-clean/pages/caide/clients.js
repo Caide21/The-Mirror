@@ -115,7 +115,7 @@ export default function ClientDashboard() {
   return (
     <>
       <Head><title>Client Codex | Selfware</title></Head>
-      <main className="min-h-screen bg-black text-white px-6 pt-20 pb-12 font-sans">
+      <main className="min-h-screen bg-black text-white px-4 sm:px-6 pt-20 pb-12 font-sans overflow-x-auto">
         <h1 className="text-3xl font-bold mb-8 border-b border-white/10 pb-2">📓 Client Codex</h1>
 
         <div className="grid gap-6">

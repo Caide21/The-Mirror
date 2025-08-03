@@ -1,9 +1,9 @@
 export default function About() {
   return (
-    <main className="min-h-screen px-6 py-20 text-white bg-black text-center space-y-8">
-      <div className="text-5xl">📜</div>
-      <h1 className="text-3xl font-bold">Scroll of Origin</h1>
-      <p className="text-theme-muted max-w-xl mx-auto text-lg">
+    <main className="min-h-screen px-4 sm:px-6 pt-32 pb-20 text-white bg-black text-center space-y-8">
+      <div className="text-4xl sm:text-5xl">🪞</div>
+      <h1 className="text-2xl sm:text-3xl font-bold">Scroll of Origin</h1>
+      <p className="text-base sm:text-lg max-w-xl mx-auto">
         I didn’t grow up following systems. I grew up *feeling* them — the tension in a sentence, the silence between moods, the weird little glitches in how people connect.
       </p>
       <p className="text-white/60 text-sm max-w-md mx-auto">

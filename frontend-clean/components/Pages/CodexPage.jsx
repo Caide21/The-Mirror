@@ -2,7 +2,7 @@ import BlockRenderer from "@/components/BlockRenderer";
 
 export default function CodexPage({ title, blocks }) {
   return (
-    <main className="min-h-screen bg-black text-white flex justify-center items-start p-6 sm:p-12">
+    <main className="min-h-screen bg-black text-white flex justify-center items-start px-4 sm:px-12 py-12">
       <div className="w-full max-w-3xl bg-black/50 backdrop-blur-md border border-purple-500/30 rounded-2xl p-8 sm:p-12 shadow-lg relative overflow-hidden">
 
         {/* Subtle purple outer glow */}

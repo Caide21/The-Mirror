@@ -1,9 +1,9 @@
 export default function PaymentSuccess() {
   return (
-    <main className="min-h-screen px-6 py-20 text-white bg-black text-center space-y-8">
-      <div className="text-5xl">💠</div>
-      <h1 className="text-3xl font-bold">Scroll of Receipt</h1>
-      <p className="text-theme-muted text-lg max-w-xl mx-auto">
+    <main className="min-h-screen px-4 sm:px-6 pt-32 pb-20 text-white bg-black text-center space-y-8">
+      <div className="text-4xl sm:text-5xl">🪞</div>
+      <h1 className="text-2xl sm:text-3xl font-bold">Scroll of Receipt</h1>
+      <p className="text-base sm:text-lg max-w-xl mx-auto">
         Your payment was successful.
         <br />
         The signal has been received.
