@@ -6,9 +6,11 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
         {/* Brand */}
         <div className="flex justify-between items-center">
-          <Link href="/home" className="text-2xl font-bold flex items-center space-x-2 hover:opacity-90 transition">
-            <span>🜔</span>
-            <span>The Mirror</span>
+          <Link href="/home" className="text-2xl font-bold hover:opacity-90 transition">
+            <span className="flex items-center gap-2">
+              <span className="text-2xl leading-none">🜔</span>
+              <span className="text-xl sm:text-2xl font-bold leading-tight">The Mirror</span>
+            </span>
           </Link>
         </div>
 
