@@ -14,14 +14,13 @@ export default function ServicesPage() {
     const result = await res.json();
     if (!res.ok) throw new Error(result.error || "Registration failed");
 
-    // 👇 Redirect to your Cal.com booking link, optinally add paystack too
+    // Redirect to Cal.com after registration
     window.location.href = "https://cal.com/caide-taylor/selfware-ai-session";
   } catch (err) {
     console.error("Registration error:", err);
     alert("Something went wrong. Please try again.");
   }
 };
-
 
   return (
     <main className="bg-black text-white min-h-screen text-center py-20 px-6">

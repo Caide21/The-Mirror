@@ -8,20 +8,23 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
     email: "",
     role: "",
     focusAreas: [],
-    project: ""
+    project: "",
+    phone: "",
+    address: "",
+    vat_number: ""
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
-    setFormData(prev => {
+    setFormData((prev) => {
       const updated = checked
         ? [...prev.focusAreas, value]
-        : prev.focusAreas.filter(f => f !== value);
+        : prev.focusAreas.filter((f) => f !== value);
       return { ...prev, focusAreas: updated };
     });
   };
@@ -37,29 +40,13 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
       <div className="bg-white/5 border border-white/10 text-white p-8 rounded-2xl w-full max-w-lg shadow-xl relative backdrop-blur-md">
         <button className="absolute top-4 right-5 text-white text-xl" onClick={onClose}>×</button>
         <h2 className="text-2xl font-bold mb-6">📜 Register Before Booking</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            name="name"
-            type="text"
-            placeholder="Your Name"
-            onChange={handleChange}
-            required
-            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10"
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Email Address"
-            onChange={handleChange}
-            required
-            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10"
-          />
-          <select
-            name="role"
-            onChange={handleChange}
-            required
-            className="w-full p-3 rounded-xl bg-black/30 border border-white/10 text-white"
-          >
+        <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+          <input name="name" type="text" placeholder="Your Name" required onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10" />
+          <input name="email" type="email" placeholder="Email Address" required onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10" />
+          <select name="role" required onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-black/30 border border-white/10 text-white">
             <option value="">Your Role</option>
             <option value="Student">Student</option>
             <option value="Founder">Founder</option>
@@ -69,9 +56,9 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
           </select>
 
           <fieldset>
-            <legend className="font-semibold mb-2">Focus Areas</legend>
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              {["GPT", "Notion", "Automation", "Symbolic System Design"].map(option => (
+            <legend className="font-semibold mb-1">Focus Areas</legend>
+            <div className="grid grid-cols-2 gap-2">
+              {["GPT", "Notion", "Automation", "Symbolic System Design"].map((option) => (
                 <label key={option} className="flex items-center gap-2">
                   <input
                     type="checkbox"
@@ -90,6 +77,30 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
             name="project"
             rows={3}
             placeholder="Describe your project or goal..."
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10"
+          />
+
+          <input
+            name="phone"
+            type="tel"
+            placeholder="Phone Number (e.g. +27...)"
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10"
+          />
+
+          <input
+            name="address"
+            type="text"
+            placeholder="Address (for invoice / records)"
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10"
+          />
+
+          <input
+            name="vat_number"
+            type="text"
+            placeholder="VAT Number (optional)"
             onChange={handleChange}
             className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10"
           />

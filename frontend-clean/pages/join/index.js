@@ -13,7 +13,7 @@ export default function JoinIndex() {
         <Link href="/join/contact" className="bg-white text-black px-6 py-4 rounded-xl hover:scale-105 transition">📬 Contact</Link>
         <Link href="/join/work" className="bg-white text-black px-6 py-4 rounded-xl hover:scale-105 transition">💼 Work With Us</Link>
         <Link href="/join/friends" className="bg-white text-black px-6 py-4 rounded-xl hover:scale-105 transition">🧑‍🚀 Allies</Link>
-        <Link href="/join/auth" className="bg-white text-black px-6 py-4 rounded-xl hover:scale-105 transition">🔐 Auth</Link>
+        <Link href="/join/login" className="bg-white text-black px-6 py-4 rounded-xl hover:scale-105 transition">🔐 Login</Link>
       </div>
     </main>
   );
