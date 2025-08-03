@@ -1,13 +1,13 @@
-// components/PageShell.jsx
-
 import { usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
 import { useState, useEffect } from 'react';
 import PhaseShiftLayer from '../Enchantments/PhaseShiftLayer';
 import PsyTripEngine from '../Enchantments/PsyTripEngine';
+import PageWrapper from './PageWrapper';
+import PageHeading from './PageHeading';
 import useIdle from '@/hooks/useIdle';
 
-export default function PageShell({ children }) {
+export default function PageShell({ children, heading = null }) {
   const pathname = usePathname();
   const { theme } = useTheme();
   const isIdle = useIdle(8000);
@@ -27,7 +27,19 @@ export default function PageShell({ children }) {
     <div data-theme-color={themeColor} className={theme === 'dark' ? 'dark' : ''}>
       <PhaseShiftLayer isIdle={isIdle} />
       <PsyTripEngine isIdle={isIdle} />
-      {children}
+
+      {heading ? (
+        <PageWrapper>
+          <PageHeading
+            emoji={heading.emoji}
+            title={heading.title}
+            subtitle={heading.subtitle}
+          />
+          {children}
+        </PageWrapper>
+      ) : (
+        children
+      )}
     </div>
   );
 }
