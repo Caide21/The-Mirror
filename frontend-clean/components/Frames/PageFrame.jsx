@@ -10,8 +10,8 @@ export default function PageFrame({
   forwardLabel = "→ Continue",
 }) {
   return (
-    <div className="min-h-screen theme-bg theme-text transition-colors duration-300 flex flex-col">
-      <div className="w-full flex justify-between items-center px-6 pt-6">
+    <div className="min-h-screen theme-bg theme-text transition-colors duration-300 flex flex-col overflow-x-hidden">
+      <div className="w-full flex justify-between items-center px-4 sm:px-6 pt-6">
         {showBack ? (
           <Link href={backHref} className="text-sm font-medium text-fuchsia-600 hover:underline">
             {backLabel}
@@ -25,7 +25,7 @@ export default function PageFrame({
         )}
       </div>
 
-      <main className="flex-1 px-6 py-12">{children}</main>
+      <main className="flex-1 px-4 sm:px-6 py-12">{children}</main>
     </div>
   );
 }

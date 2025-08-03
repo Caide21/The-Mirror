@@ -1,10 +1,7 @@
-import Link from 'next/link'
-import ParchmentWrapper from '@/components/Layout/ParchmentWrapper'
-
 export default function QuestCard({ quest }) {
   return (
     <ParchmentWrapper>
-      <h1 className="text-2xl font-bold mb-2">{quest.title}</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-2">{quest.title}</h1>
       <p className="mb-4">{quest.description}</p>
 
       <div className="bg-theme-muted h-2 rounded-full mb-4">
@@ -15,11 +12,11 @@ export default function QuestCard({ quest }) {
       </div>
 
       <Link
-        href={`/${quest.slug}`} // unified slug mirror
+        href={`/${quest.slug}`}
         className="text-theme-accent text-sm underline"
       >
         Open Quest →
       </Link>
     </ParchmentWrapper>
-  )
+  );
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function StatCard({ stat }) {
   const percent = Math.round((stat.xp / stat.maxXP) * 100);
   const tierColors = {
@@ -14,9 +12,9 @@ export default function StatCard({ stat }) {
   };
 
   return (
-    <div className="rounded-2xl p-4 border bg-black/20 shadow-md space-y-2">
+    <div className="w-full rounded-2xl px-4 sm:px-6 py-4 border bg-black/20 shadow-md space-y-2">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold">{stat.label}</h2>
+        <h2 className="text-base sm:text-xl font-semibold">{stat.label}</h2>
         <span className={`text-sm font-medium ${tierColors[stat.tier] || ""}`}>
           {stat.tier} (Lv. {stat.tierLevel})
         </span>

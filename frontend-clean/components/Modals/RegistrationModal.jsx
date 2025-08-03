@@ -36,10 +36,10 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-white/5 border border-white/10 text-white p-8 rounded-2xl w-full max-w-lg shadow-xl relative backdrop-blur-md">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+      <div className="bg-white/5 border border-white/10 text-white p-4 sm:p-8 rounded-2xl w-full max-w-lg shadow-xl relative backdrop-blur-md overflow-y-auto max-h-[90vh]">
         <button className="absolute top-4 right-5 text-white text-xl" onClick={onClose}>×</button>
-        <h2 className="text-2xl font-bold mb-6">📜 Register Before Booking</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-6">📜 Register Before Booking</h2>
         <form onSubmit={handleSubmit} className="space-y-4 text-sm">
           <input name="name" type="text" placeholder="Your Name" required onChange={handleChange}
             className="w-full p-3 rounded-xl bg-black/30 placeholder-white/60 border border-white/10" />
@@ -57,7 +57,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }) {
 
           <fieldset>
             <legend className="font-semibold mb-1">Focus Areas</legend>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {["GPT", "Notion", "Automation", "Symbolic System Design"].map((option) => (
                 <label key={option} className="flex items-center gap-2">
                   <input

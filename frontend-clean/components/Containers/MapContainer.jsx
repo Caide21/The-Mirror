@@ -50,8 +50,10 @@ const RenderNode = ({ node, depth = 0 }) => {
 
 const Map = ({ data }) => {
   return (
-    <div className="p-4 min-h-screen bg-black text-white">
-      <RenderNode node={data} />
+    <div className="p-4 min-h-screen bg-black text-white overflow-x-auto">
+      <div className="max-w-screen-lg mx-auto">
+        <RenderNode node={data} />
+      </div>
     </div>
   );
 };
