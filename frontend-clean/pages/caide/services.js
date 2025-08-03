@@ -23,7 +23,7 @@ export default function ServicesPage() {
 };
 
   return (
-    <main className="bg-black text-white min-h-screen text-center py-16 px-4 sm:px-6">
+    <main className="bg-black text-white min-h-screen text-center pt-32 pb-20 px-4 sm:px-6">
       <h1 className="text-3xl font-bold mb-2">💼 Scroll of Services</h1>
       <p className="mb-6">I offer tailored AI sessions — guiding you through GPT, Notion or symbolic system design.</p>
 

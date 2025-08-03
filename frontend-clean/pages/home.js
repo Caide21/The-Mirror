@@ -20,11 +20,18 @@ export default function Home() {
           <p className="text-lg max-w-xl mx-auto text-theme-muted">
             A symbolic OS for self-reflection, growth, and emotional evolution. Built to feel.
           </p>
-          <div className="mt-8 space-x-4">
-            <Link href="/mirror/scroll" className="bg-white text-black px-6 py-3 rounded-2xl shadow-xl hover:scale-105 transition">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full items-center justify-center">
+            <Link
+              href="/mirror/scroll"
+              className="bg-white text-black text-sm sm:text-base px-6 py-3 rounded-2xl shadow-xl hover:scale-105 transition w-full sm:w-auto text-center"
+            >
               Experience the Scroll
             </Link>
-            <Link href="/codex" className="border border-white px-6 py-3 rounded-2xl hover:bg-white/10 transition">
+
+            <Link
+              href="/codex"
+              className="border border-white text-sm sm:text-base px-6 py-3 rounded-2xl hover:bg-white/10 transition w-full sm:w-auto text-center"
+            >
               Enter the Codex
             </Link>
           </div>

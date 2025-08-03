@@ -5,7 +5,7 @@ import { ZONE_MAP } from "../../lib/zones";
 export default function QuestsPage({ quests }) {
   console.log("Fetched quests:", quests);11
   return (
-    <main className="min-h-screen px-6 py-20">
+    <main className="min-h-screen pt-32 pb-20 px-4 sm:px-6">
       <h1 className="text-4xl font-bold mb-8 text-center">🎯 Your Quests</h1>
 
       {quests.length === 0 && (
