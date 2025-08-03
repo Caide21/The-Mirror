@@ -1,41 +1,51 @@
-export default function Services() {
-  const handlePaystack = async () => {
-    const res = await fetch('/api/create-paystack-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: 'test@example.com' // Replace with real user email or form later
-      })
+import { useState } from "react";
+import RegistrationModal from "@/components/Modals/RegistrationModal";
+
+export default function ServicesPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleFormSubmit = async (formData) => {
+  try {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify(formData)
     });
 
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert('Failed to create payment session.');
-    }
-  };
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || "Registration failed");
+
+    // 👇 Redirect to your Cal.com booking link, optinally add paystack too
+    window.location.href = "https://cal.com/caide-taylor/selfware-ai-session";
+  } catch (err) {
+    console.error("Registration error:", err);
+    alert("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
-    <main className="min-h-screen px-6 py-20 text-white bg-black text-center space-y-12">
-      <div className="text-5xl">💼</div>
-      <h1 className="text-3xl font-bold">Scroll of Services</h1>
-      <p className="text-theme-muted text-lg max-w-xl mx-auto">
-        I offer tailored AI sessions — guiding you through GPT, Notion or symbolic system design.
-      </p>
+    <main className="bg-black text-white min-h-screen text-center py-20 px-6">
+      <h1 className="text-3xl font-bold mb-2">💼 Scroll of Services</h1>
+      <p className="mb-6">I offer tailored AI sessions — guiding you through GPT, Notion or symbolic system design.</p>
 
-      <section className="max-w-md mx-auto space-y-4">
-        <h2 className="text-xl font-semibold">🧠 1-Hour AI Session — R250</h2>
-        <p className="text-white/60 text-sm">
+      <div className="bg-white/10 p-6 rounded-xl max-w-md mx-auto">
+        <p className="text-xl font-semibold mb-2">🧠 1-Hour AI Session — R250</p>
+        <p className="text-sm mb-4 text-gray-300">
           For students, creators, or founders. I’ll help you automate, architect, or clarify your system — from scratch or stuck.
         </p>
         <button
-          onClick={handlePaystack}
-          className="mt-2 inline-block px-6 py-3 rounded-xl bg-white text-black font-semibold hover:scale-105 transition"
+          className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition"
+          onClick={() => setModalOpen(true)}
         >
-          Pay with Paystack – R250
+          Register & Book — R250
         </button>
-      </section>
+      </div>
+
+      <RegistrationModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSubmit={handleFormSubmit}
+      />
     </main>
   );
 }
