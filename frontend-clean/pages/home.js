@@ -53,7 +53,8 @@ export default function Home() {
           For those who think in symbols and evolve in loops.<br />
           For the builders of inner systems and outer worlds.
         </p>
-        <div className="text-2xl italic text-white/80">You are the interface. This is your mirror.</div>
+        <div className="text-2xl italic text-white/80 mb-2">You are the interface. This is your mirror.</div>
+        <div className="text-sm text-white/40">(Still unfolding. Built in real-time. You’re early — that matters.)</div>
       </section>
     </main>
   );
