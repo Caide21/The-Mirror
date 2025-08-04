@@ -1,23 +1,29 @@
 import { useState } from "react";
 import RegistrationModal from "@/components/Modals/RegistrationModal";
-import PageShell from "@/components/Layout/PageShell";
+import PageHeading from "@/components/Layout/PageHeading";
+import PageWrapper from "@/components/Layout/PageWrapper";
 
 export default function ServicesPage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [sessionType, setSessionType] = useState("single");
 
   const handleFormSubmit = async (formData) => {
     try {
       const res = await fetch("/api/register", {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, sessionType }),
       });
 
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Registration failed");
 
-      // Redirect to Cal.com after registration
-      window.location.href =
-        "https://cal.com/caide-taylor/selfware-ai-session";
+      // Redirect to appropriate Cal.com link
+      const calURL =
+        sessionType === "package"
+          ? "https://cal.com/caide-taylor/selfware-ai-10-sessions"
+          : "https://cal.com/caide-taylor/selfware-ai-session";
+
+      window.location.href = calURL;
     } catch (err) {
       console.error("Registration error:", err);
       alert("Something went wrong. Please try again.");
@@ -25,47 +31,58 @@ export default function ServicesPage() {
   };
 
   return (
-    <PageShell
-      heading={{
-        emoji: "💼",
-        title: "Scroll of Services",
-        subtitle:
-          "I offer tailored AI sessions — guiding you through GPT, Notion or symbolic system design.",
-      }}
-    >
-      {/* Single Session */}
-      <div className="bg-white/10 px-4 sm:px-6 py-6 rounded-xl max-w-md mx-auto mt-6">
-        <p className="text-xl font-semibold mb-2">🧠 1-Hour AI Session — R250</p>
-        <p className="text-sm mb-4 text-gray-300">
-          For students, creators, or founders. I’ll help you automate, architect, or clarify your system — from scratch or stuck.
-        </p>
-        <button
-          className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition"
-          onClick={() => setModalOpen(true)}
-        >
-          Register & Book — R250
-        </button>
-      </div>
+    <PageWrapper>
+      <main className="bg-black text-white min-h-screen text-center pt-32 pb-24 px-4 sm:px-6">
+        <PageHeading emoji="💼" title="Scroll of Services" />
 
-      {/* 10-Session Package */}
-      <div className="bg-white/10 px-4 sm:px-6 py-6 rounded-xl max-w-md mx-auto mt-10">
-        <p className="text-xl font-semibold mb-2">🌀 10-Session Package — R2,000</p>
-        <p className="text-sm mb-4 text-gray-300">
-          For committed creators or professionals. 10 deeply personalized sessions to master your AI workflow and build systems that evolve with you.
+        <p className="mb-10 max-w-xl mx-auto text-theme-muted">
+          I offer tailored AI sessions — guiding you through GPT, Notion, or symbolic system design.  
         </p>
-        <button
-          className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition"
-          onClick={() => setModalOpen(true)}
-        >
-          Book 10-Session Pack — R2,000
-        </button>
-      </div>
 
-      <RegistrationModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onSubmit={handleFormSubmit}
-      />
-    </PageShell>
+        <div className="grid gap-8 max-w-3xl mx-auto sm:grid-cols-2">
+          {/* Single Session */}
+          <div className="bg-white/10 px-6 py-6 rounded-xl">
+            <p className="text-xl font-semibold mb-2">🧠 Single Session — R250</p>
+            <p className="text-sm mb-4 text-gray-300">
+              A one-off AI consulting session to help you automate, clarify, or build — fast.
+            </p>
+            <button
+              className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition"
+              onClick={() => {
+                setSessionType("single");
+                setModalOpen(true);
+              }}
+            >
+              Book 1 Session
+            </button>
+          </div>
+
+          {/* 10-Session Pack */}
+          <div className="bg-white/10 px-6 py-6 rounded-xl">
+            <p className="text-xl font-semibold mb-2">🌀 Selfware Companion Series — R2250</p>
+            <p className="text-sm mb-4 text-gray-300">
+              10-session pack to go deep — building systems, aligning with tools, and evolving how you think.  
+              <br />
+              (R225/session — R250 discount)
+            </p>
+            <button
+              className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition"
+              onClick={() => {
+                setSessionType("package");
+                setModalOpen(true);
+              }}
+            >
+              Book 10 Sessions
+            </button>
+          </div>
+        </div>
+
+        <RegistrationModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onSubmit={handleFormSubmit}
+        />
+      </main>
+    </PageWrapper>
   );
 }
