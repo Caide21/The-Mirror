@@ -20,7 +20,7 @@ export default function ServicesPage() {
       // Redirect to appropriate Cal.com link
       const calURL =
         sessionType === "package"
-          ? "https://cal.com/caide-taylor/selfware-ai-10-sessions"
+          ? "https://cal.com/caide-taylor/selfware-companion-series"
           : "https://cal.com/caide-taylor/selfware-ai-session";
 
       window.location.href = calURL;
@@ -33,7 +33,7 @@ export default function ServicesPage() {
   return (
     <PageWrapper>
       <main className="bg-black text-white min-h-screen text-center pt-32 pb-24 px-4 sm:px-6">
-        <PageHeading emoji="💼" title="Scroll of Services" />
+        <PageHeading emoji="💼" title="Services" />
 
         <p className="mb-10 max-w-xl mx-auto text-theme-muted">
           I offer tailored AI sessions — guiding you through GPT, Notion, or symbolic system design.  
