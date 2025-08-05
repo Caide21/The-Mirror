@@ -1,9 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import PageShell from "@/components/Layout/PageShell";
-=======
-import PageFrame from "@/components/Frames/PageFrame";
->>>>>>> 99cc43d (cleanup)
 import Link from "next/link";
 
 import FocusPanel from "@/components/Mirror/FocusPanel";
@@ -34,7 +30,6 @@ export default function InterfacePage() {
   ];
 
   return (
-<<<<<<< HEAD
     <PageShell
       heading={{
         emoji: "🧬",
@@ -43,12 +38,6 @@ export default function InterfacePage() {
       }}
     >
       <div className="p-4 max-w-5xl mx-auto space-y-6">
-=======
-    <PageFrame>
-      <div className="p-6 max-w-5xl mx-auto space-y-6">
-        <h1 className="text-4xl font-bold mb-4">🧬 Human OS Interface</h1>
-
->>>>>>> 99cc43d (cleanup)
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {nav.map(({ label, path }) => (
             <Link key={path} href={path}>
@@ -81,12 +70,6 @@ export default function InterfacePage() {
           <FeaturedScrollPanel title="📜 Scroll of Emotional Clarity" />
         </div>
       </div>
-<<<<<<< HEAD
     </PageShell>
   );
 }
-=======
-    </PageFrame>
-  );
-}
->>>>>>> 99cc43d (cleanup)
