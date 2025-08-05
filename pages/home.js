@@ -1,11 +1,7 @@
 import Link from "next/link";
-<<<<<<< HEAD
 import PageShell from "@/components/Layout/PageShell";
 
-=======
-
 // Clean, symbolic card layout
->>>>>>> 99cc43d (cleanup)
 const ScrollCard = ({ emoji, title, description }) => (
   <div className="theme-card p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition text-left shadow-xl backdrop-blur-sm border border-white/10">
     <div className="text-4xl mb-3">{emoji}</div>
@@ -16,36 +12,19 @@ const ScrollCard = ({ emoji, title, description }) => (
 
 export default function Home() {
   return (
-<<<<<<< HEAD
     <PageShell
       heading={{
         emoji: "🜔",
-        title: "Welcome to the Mirror",
-        subtitle: "A symbolic OS for self-reflection, growth, and emotional evolution. Built to feel.",
+        title: "Welcome to Selfware",
+        subtitle: "A cognitive OS for self-reflection, growth, and emotional evolution. Built to feel.",
       }}
     >
       {/* Hero CTA */}
-      <section className="pb-20 -mt-16 px-4 sm:px-6 text-center">
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full items-center justify-center">
-          <Link
-            href="/mirror/scroll"
-            className="bg-white text-black text-sm sm:text-base px-6 py-3 rounded-2xl shadow-xl hover:scale-105 transition w-full sm:w-auto text-center"
-          >
-            Experience the Scroll
-          </Link>
-          <Link
-            href="/codex"
-            className="border border-white text-sm sm:text-base px-6 py-3 rounded-2xl hover:bg-white/10 transition w-full sm:w-auto text-center"
-          >
-            Enter the Codex
-          </Link>
-=======
-    <main className="bg-black text-white font-sans overflow-x-hidden">
-     <section className="min-h-screen pt-32 sm:pt-40 flex flex-col justify-center items-center text-center px-4 bg-gradient-to-b from-[#0c0a1e] to-black relative overflow-hidden">
+      <section className="min-h-screen pt-32 sm:pt-40 flex flex-col justify-center items-center text-center px-4 bg-gradient-to-b from-[#0c0a1e] to-black relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none animate-pulse bg-gradient-radial from-indigo-950/10 via-purple-900/10 to-transparent blur-3xl" />
         <div className="z-10">
           <div className="text-6xl mb-6">🜔</div>
-          <h1 className="text-5xl font-bold mb-4 tracking-tight">Welcome to the Selfware</h1>
+          <h1 className="text-5xl font-bold mb-4 tracking-tight">Welcome to Selfware</h1>
           <p className="text-lg max-w-xl mx-auto text-theme-muted">
             A cognitive OS for self-reflection, growth, and emotional evolution. Built to feel.
           </p>
@@ -56,7 +35,6 @@ export default function Home() {
             >
               Experience the Scroll
             </Link>
-
             <Link
               href="/codex"
               className="border border-white text-sm sm:text-base px-6 py-3 rounded-2xl hover:bg-white/10 transition w-full sm:w-auto text-center"
@@ -64,7 +42,6 @@ export default function Home() {
               Enter the Codex
             </Link>
           </div>
->>>>>>> 99cc43d (cleanup)
         </div>
       </section>
 
@@ -92,10 +69,6 @@ export default function Home() {
         <div className="text-2xl italic text-white/80 mb-2">You are the interface. This is your mirror.</div>
         <div className="text-sm text-white/40">(Still unfolding. Built in real-time. You’re early — that matters.)</div>
       </section>
-<<<<<<< HEAD
     </PageShell>
-=======
-    </main>
->>>>>>> 99cc43d (cleanup)
   );
 }
