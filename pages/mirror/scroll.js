@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+<<<<<<< HEAD
 import PageShell from "@/components/Layout/PageShell";
+=======
+>>>>>>> 99cc43d (cleanup)
 
 export default function Scroll() {
   const [submitted, setSubmitted] = useState(false);
@@ -14,6 +17,7 @@ export default function Scroll() {
   };
 
   return (
+<<<<<<< HEAD
     <PageShell
       heading={{
         emoji: "🌀",
@@ -23,6 +27,19 @@ export default function Scroll() {
     >
       {!submitted ? (
         <form onSubmit={handleSubmit} className="mt-10 w-full max-w-xl space-y-6 mx-auto">
+=======
+    <main className="bg-black text-white px-6 py-16 font-sans min-h-screen flex flex-col items-center justify-center">
+      <div className="text-center max-w-xl space-y-4">
+        <div className="text-4xl">🌀</div>
+        <h1 className="text-3xl font-bold">Experience the Scroll</h1>
+        <p className="text-theme-muted text-lg">
+          Selfware doesn’t just track your growth — it teaches your mind and body how to speak the same language.
+        </p>
+      </div>
+
+      {!submitted ? (
+        <form onSubmit={handleSubmit} className="mt-10 w-full max-w-xl space-y-6">
+>>>>>>> 99cc43d (cleanup)
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -38,7 +55,11 @@ export default function Scroll() {
           </button>
         </form>
       ) : (
+<<<<<<< HEAD
         <div className="mt-12 max-w-xl text-center space-y-6 mx-auto">
+=======
+        <div className="mt-12 max-w-xl text-center space-y-6">
+>>>>>>> 99cc43d (cleanup)
           <div className="text-3xl">✨</div>
           <h2 className="text-2xl font-semibold">Reflection Received</h2>
           <p className="text-theme-muted">
@@ -59,6 +80,12 @@ export default function Scroll() {
           </Link>
         </div>
       )}
+<<<<<<< HEAD
     </PageShell>
   );
 }
+=======
+    </main>
+  );
+}
+>>>>>>> 99cc43d (cleanup)

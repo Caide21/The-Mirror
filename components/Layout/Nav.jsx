@@ -9,7 +9,11 @@ export default function Nav() {
           <Link href="/home" className="text-2xl font-bold hover:opacity-90 transition">
             <span className="flex items-center gap-2">
               <span className="text-2xl leading-none">🜔</span>
+<<<<<<< HEAD
               <span className="text-xl sm:text-2xl font-bold leading-tight">The Mirror</span>
+=======
+              <span className="text-xl sm:text-2xl font-bold leading-tight">Selfware</span>
+>>>>>>> 99cc43d (cleanup)
             </span>
           </Link>
         </div>

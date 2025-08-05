@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
 import { ZONE_MAP } from "../../lib/zones";
+<<<<<<< HEAD
 import PageShell from "@/components/Layout/PageShell";
 
 export default function QuestsPage({ quests }) {
@@ -14,6 +15,15 @@ export default function QuestsPage({ quests }) {
         subtitle: "Track your symbolic journey by zone. These are your scrolls of becoming.",
       }}
     >
+=======
+
+export default function QuestsPage({ quests }) {
+  console.log("Fetched quests:", quests);11
+  return (
+    <main className="min-h-screen pt-32 pb-20 px-4 sm:px-6">
+      <h1 className="text-4xl font-bold mb-8 text-center">🎯 Your Quests</h1>
+
+>>>>>>> 99cc43d (cleanup)
       {quests.length === 0 && (
         <p className="text-center text-theme-muted">
           No quests found yet. Add some to your Supabase DB!
@@ -35,7 +45,11 @@ export default function QuestsPage({ quests }) {
         };
 
         return (
+<<<<<<< HEAD
           <section key={zone} className="mb-16 max-w-6xl mx-auto px-4">
+=======
+          <section key={zone} className="mb-16 max-w-6xl mx-auto">
+>>>>>>> 99cc43d (cleanup)
             <h2 className="text-2xl font-bold mb-2">
               {zoneMeta.emoji} {zoneMeta.name}
             </h2>
@@ -65,7 +79,11 @@ export default function QuestsPage({ quests }) {
           </section>
         );
       })}
+<<<<<<< HEAD
     </PageShell>
+=======
+    </main>
+>>>>>>> 99cc43d (cleanup)
   );
 }
 

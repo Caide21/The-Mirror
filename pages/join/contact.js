@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import PageShell from "@/components/Layout/PageShell";
 
 export default function Contact() {
@@ -10,6 +11,23 @@ export default function Contact() {
       }}
     >
       <form className="mt-10 w-full max-w-xl space-y-6 mx-auto">
+=======
+import React from 'react';
+
+export default function Contact() {
+  return (
+    <main className="bg-black text-white px-6 py-16 font-sans min-h-screen flex flex-col items-center justify-center">
+      <div className="text-center space-y-6 max-w-xl">
+        <div className="text-4xl">📩</div>
+        <h1 className="text-3xl font-bold">Start a Scroll</h1>
+        <p className="text-theme-muted text-lg">
+            If you resonate with what I build, let&apos;s begin a conversation.
+            Tell me what you’re creating — or what you want to feel.
+          </p>
+      </div>
+
+      <form className="mt-10 w-full max-w-xl space-y-6">
+>>>>>>> 99cc43d (cleanup)
         <div>
           <label className="block text-sm mb-1" htmlFor="name">Your Name</label>
           <input
@@ -47,6 +65,12 @@ export default function Contact() {
           Cast the Scroll
         </button>
       </form>
+<<<<<<< HEAD
     </PageShell>
   );
 }
+=======
+    </main>
+  );
+}
+>>>>>>> 99cc43d (cleanup)
