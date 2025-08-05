@@ -24,7 +24,12 @@ export default function PageShell({ children, heading = null }) {
   }, [pathname]);
 
   return (
-    <div data-theme-color={themeColor} className={theme === 'dark' ? 'dark' : ''}>
+    <div
+      data-theme-color={themeColor}
+      className={`min-h-screen bg-gradient-to-b from-[#0c0a1e] to-black text-white ${
+        theme === 'dark' ? 'dark' : ''
+      }`}
+    >
       <PhaseShiftLayer isIdle={isIdle} />
       <PsyTripEngine isIdle={isIdle} />
 

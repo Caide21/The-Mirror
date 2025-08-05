@@ -20,14 +20,9 @@ export default function Home() {
       }}
     >
       {/* Hero CTA */}
-      <section className="min-h-screen pt-32 sm:pt-40 flex flex-col justify-center items-center text-center px-4 bg-gradient-to-b from-[#0c0a1e] to-black relative overflow-hidden">
+      <section className="min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none animate-pulse bg-gradient-radial from-indigo-950/10 via-purple-900/10 to-transparent blur-3xl" />
         <div className="z-10">
-          <div className="text-6xl mb-6">🜔</div>
-          <h1 className="text-5xl font-bold mb-4 tracking-tight">Welcome to Selfware</h1>
-          <p className="text-lg max-w-xl mx-auto text-theme-muted">
-            A cognitive OS for self-reflection, growth, and emotional evolution. Built to feel.
-          </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full items-center justify-center">
             <Link
               href="/mirror/scroll"
@@ -46,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Scroll Gallery */}
-      <section className="py-20 bg-black px-6">
+      <section className="py-20 px-6">
         <h2 className="text-4xl font-semibold text-center mb-12">⚡ System Components</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ScrollCard emoji="🪞" title="The Mirror" description="Track stats, reflect emotions, view internal state." />
@@ -59,7 +54,7 @@ export default function Home() {
       </section>
 
       {/* Who It's For */}
-      <section className="py-24 bg-gradient-to-b from-black to-[#0c0a1e] px-6 text-center">
+      <section className="py-24 px-6 text-center">
         <h2 className="text-4xl font-semibold mb-4">Who Is This For?</h2>
         <p className="text-theme-muted max-w-2xl mx-auto mb-10">
           For the ones who feel deeply.<br />
