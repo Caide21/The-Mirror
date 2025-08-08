@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import '../styles/z-layer.css';
 import '../styles/fog.css'; // 🌀 visual fog overlays (only show when ERS is ACTIVE)
+import '../styles/enchantments.css';
 
 import Layout from '../components/Layout/PageShell';
 import Nav from '../components/Layout/Nav';
